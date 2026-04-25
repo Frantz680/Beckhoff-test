@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.16">
+  <POU Name="MAIN" Id="{47fb85a4-8975-45bc-84a8-4e8406f2213d}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+    rTrig : R_TRIG;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+// Détection front montant
+rTrig(CLK := GVL.BoutonVirtuel);
+
+IF GVL.BoutonVirtuel THEN
+    GVL.Lumiere := TRUE;
+ELSE
+    GVL.Lumiere := FALSE;
+END_IF;
+
+// Incrément seulement sur appui
+IF rTrig.Q THEN
+    GVL.iPushCounter := GVL.iPushCounter + 1;
+END_IF;]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="95" Count="2" />
+      <LineId Id="99" Count="9" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

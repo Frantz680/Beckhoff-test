@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.16">
+  <GVL Name="GVL" Id="{53caf463-c901-43aa-a5d3-d1dfaafa4c3e}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+
+    BoutonVirtuel : BOOL := FALSE;
+    Lumiere : BOOL := FALSE;
+	iPushCounter : UINT := 0 ;
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
