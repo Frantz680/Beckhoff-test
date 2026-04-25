@@ -7,8 +7,12 @@ VAR_GLOBAL
     BoutonVirtuel : BOOL := FALSE;
 	BoutonSelecteur : BOOL := FALSE;
 	
+	
     LumiereDroite : BOOL := FALSE;
 	LumiereGauche : BOOL := FALSE;
+	
+	CounterLumiereDroiteAllumer : UINT := 0;
+	CounterLumiereGaucheAllumer : UINT := 0;
 	
 	iPushCounter : UINT := 0 ;
 	
