@@ -5,7 +5,11 @@
 VAR_GLOBAL
 
     BoutonVirtuel : BOOL := FALSE;
-    Lumiere : BOOL := FALSE;
+	BoutonSelecteur : BOOL := FALSE;
+	
+    LumiereDroite : BOOL := FALSE;
+	LumiereGauche : BOOL := FALSE;
+	
 	iPushCounter : UINT := 0 ;
 	
 END_VAR]]></Declaration>
