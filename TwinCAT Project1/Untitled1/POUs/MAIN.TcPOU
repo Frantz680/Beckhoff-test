@@ -11,10 +11,15 @@ END_VAR
 // Détection front montant
 rTrig(CLK := GVL.BoutonVirtuel);
 
+GVL.LumiereDroite := FALSE;
+GVL.LumiereGauche := FALSE;
+
 IF GVL.BoutonVirtuel THEN
-    GVL.Lumiere := TRUE;
-ELSE
-    GVL.Lumiere := FALSE;
+    IF GVL.BoutonSelecteur THEN
+        GVL.LumiereDroite := TRUE;
+    ELSE
+        GVL.LumiereGauche := TRUE;
+    END_IF
 END_IF;
 
 // Incrément seulement sur appui
@@ -23,8 +28,7 @@ IF rTrig.Q THEN
 END_IF;]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="95" Count="2" />
-      <LineId Id="99" Count="9" />
+      <LineId Id="113" Count="17" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
