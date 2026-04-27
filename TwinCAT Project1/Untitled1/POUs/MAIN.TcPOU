@@ -4,11 +4,16 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
     rTrig : R_TRIG;
+    fTrig : F_TRIG;
 END_VAR
+
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[rTrig(CLK := GVL.BoutonSelecteur);
+      <ST><![CDATA[
+rTrig(CLK := GVL.BoutonSelecteur);
+fTrig(CLK := GVL.BoutonSelecteur);
 
+// Lumières
 GVL.LumiereDroite := FALSE;
 GVL.LumiereGauche := FALSE;
 
@@ -20,20 +25,23 @@ IF GVL.BoutonVirtuel THEN
     END_IF
 END_IF;
 
-IF rTrig.Q AND GVL.BoutonVirtuel THEN
-    IF GVL.BoutonSelecteur THEN
+// Comptage seulement si bouton actif
+IF GVL.BoutonVirtuel THEN
+
+    // Passage gauche -> droite
+    IF rTrig.Q THEN
         GVL.CounterLumiereDroiteAllumer := GVL.CounterLumiereDroiteAllumer + 1;
-    ELSE
+    END_IF;
+
+    // Passage droite -> gauche
+    IF fTrig.Q THEN
         GVL.CounterLumiereGaucheAllumer := GVL.CounterLumiereGaucheAllumer + 1;
-    END_IF
+    END_IF;
+
 END_IF;]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="210" Count="0" />
-      <LineId Id="229" Count="0" />
-      <LineId Id="211" Count="1" />
-      <LineId Id="228" Count="0" />
-      <LineId Id="213" Count="13" />
+      <LineId Id="235" Count="28" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
