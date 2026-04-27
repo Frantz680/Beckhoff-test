@@ -7,9 +7,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-// Détection front montant
-rTrig(CLK := GVL.BoutonSelecteur);
+      <ST><![CDATA[rTrig(CLK := GVL.BoutonSelecteur);
 
 GVL.LumiereDroite := FALSE;
 GVL.LumiereGauche := FALSE;
@@ -19,33 +17,23 @@ IF GVL.BoutonVirtuel THEN
         GVL.LumiereDroite := TRUE;
     ELSE
         GVL.LumiereGauche := TRUE;
-  END_IF
+    END_IF
 END_IF;
 
-
-IF rTrig.Q THEN
-    IF GVL.LumiereDroite THEN
+IF rTrig.Q AND GVL.BoutonVirtuel THEN
+    IF GVL.BoutonSelecteur THEN
         GVL.CounterLumiereDroiteAllumer := GVL.CounterLumiereDroiteAllumer + 1;
+    ELSE
+        GVL.CounterLumiereGaucheAllumer := GVL.CounterLumiereGaucheAllumer + 1;
     END_IF
-	
-	IF GVL.LumiereGauche THEN
-		GVL.CounterLumiereGaucheAllumer := GVL.CounterLumiereGaucheAllumer + 1;
-	END_IF
 END_IF;]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="113" Count="0" />
-      <LineId Id="156" Count="0" />
-      <LineId Id="115" Count="4" />
-      <LineId Id="165" Count="2" />
-      <LineId Id="169" Count="2" />
-      <LineId Id="126" Count="1" />
-      <LineId Id="186" Count="0" />
-      <LineId Id="191" Count="0" />
-      <LineId Id="197" Count="1" />
-      <LineId Id="196" Count="0" />
-      <LineId Id="201" Count="0" />
-      <LineId Id="203" Count="2" />
+      <LineId Id="210" Count="0" />
+      <LineId Id="229" Count="0" />
+      <LineId Id="211" Count="1" />
+      <LineId Id="228" Count="0" />
+      <LineId Id="213" Count="13" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
